@@ -28,6 +28,15 @@ namespace AnagramChecker.TestTools
           List<string> expected = new List<string> { "beard" };
           Assert.AreEqual(typeof(List<string>), expected.GetType());
         }
+        [TestMethod]
+        public void GetArray_CreatesArrayOfAnagramWord_Array()
+        {
+          string anagramWord = "bread";
+          char[] anagramArray = GetArray(anagramWord);
+          Assert.AreEqual(typeof(Array), anagramArray.GetType());
+
+          
+        }
     }
 }
 
