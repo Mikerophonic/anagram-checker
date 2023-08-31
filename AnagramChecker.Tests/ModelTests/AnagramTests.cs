@@ -70,11 +70,12 @@ namespace AnagramChecker.Test
         {
           string anagramWord = "bread";
           Anagram newAnagram = new Anagram(anagramWord);
+          char[] anagramArray = newAnagram.GetArray(anagramWord);
           string userWordList = "bread beard butter bear pickle";
           string[] userWordListArray = newAnagram.GetWordListArray(userWordList);
           char[][] charArrays = newAnagram.GetCharArrays(userWordListArray);
           char [][] sortedCharArrays = newAnagram.SortCharArrays(charArrays);
-          List<bool> comparisonResults = newAnagram.CompareToBaseWord(sortedCharArrays);
+          List<bool> comparisonResults = newAnagram.CompareToBaseWord(sortedCharArrays, anagramArray);
           Assert.AreEqual(typeof(List<bool>), comparisonResults.GetType());
         }
     }
