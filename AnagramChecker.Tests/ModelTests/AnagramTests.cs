@@ -11,14 +11,18 @@ namespace AnagramChecker.Test
         [TestMethod]
         public void AnagramConstructor_CreatesInstanceOfAnagram_Anagram()
         {
-          Anagram newAnagram = new Anagram("bread");
+          string anagramWord = "bread";
+          string userWordList = "bread beard butter bear pickle";
+          Anagram newAnagram = new Anagram(anagramWord, userWordList);
           Assert.AreEqual(typeof(Anagram), newAnagram.GetType());
         }
+
         [TestMethod]
         public void GetAnagramWord_ReturnsAnagramWord_String()
         {
           string anagramWord = "bread";
-          Anagram newAnagram = new Anagram(anagramWord);
+          string userWordList = "bread beard butter bear pickle";
+          Anagram newAnagram = new Anagram(anagramWord, userWordList);
           string result = newAnagram.AnagramWord;
           Assert.AreEqual(anagramWord, result);
         }
@@ -27,8 +31,8 @@ namespace AnagramChecker.Test
         public void GetWordListArray_CreateAStringArrayFromUserInput_StringArray() 
         {
           string anagramWord = "bread";
-          Anagram newAnagram = new Anagram(anagramWord);
           string userWordList = "bread beard butter bear pickle";
+          Anagram newAnagram = new Anagram(anagramWord, userWordList);
           string[] userWordListArray = newAnagram.GetWordListArray(userWordList);
           Assert.AreEqual(typeof(string[]), userWordListArray.GetType());
         }
@@ -37,7 +41,8 @@ namespace AnagramChecker.Test
         public void GetArray_CreatesArrayOfAnagramWord_Array()
         {
           string anagramWord = "bread";
-          Anagram newAnagram = new Anagram(anagramWord);
+          string userWordList = "bread beard butter bear pickle";
+          Anagram newAnagram = new Anagram(anagramWord, userWordList);
           char[] anagramArray = newAnagram.GetArray(anagramWord);
           Assert.AreEqual(typeof(char[]), anagramArray.GetType());
         }
@@ -46,8 +51,8 @@ namespace AnagramChecker.Test
         public void GetCharArrays_CreatesCharArraysFromUserInputtedWordList_Array()
         {
           string anagramWord = "bread";
-          Anagram newAnagram = new Anagram(anagramWord);
           string userWordList = "bread beard butter bear pickle";
+          Anagram newAnagram = new Anagram(anagramWord, userWordList);
           string[] userWordListArray = newAnagram.GetWordListArray(userWordList);
           char[][] charArrays = newAnagram.GetCharArrays(userWordListArray);
           Assert.AreEqual(typeof(char[][]), charArrays.GetType());
@@ -57,8 +62,8 @@ namespace AnagramChecker.Test
         public void SortCharArrays_SortsEachCharArray_Array()
         {
           string anagramWord = "bread";
-          Anagram newAnagram = new Anagram(anagramWord);
           string userWordList = "bread beard butter bear pickle";
+          Anagram newAnagram = new Anagram(anagramWord, userWordList);
           string[] userWordListArray = newAnagram.GetWordListArray(userWordList);
           char[][] charArrays = newAnagram.GetCharArrays(userWordListArray);
           char [][] sortedCharArrays = newAnagram.SortCharArrays(charArrays);
@@ -69,9 +74,9 @@ namespace AnagramChecker.Test
         public void CompareToBaseWord_SortsEachCharArray_ListOfBools()
         {
           string anagramWord = "bread";
-          Anagram newAnagram = new Anagram(anagramWord);
-          char[] anagramArray = newAnagram.GetArray(anagramWord);
           string userWordList = "bread beard butter bear pickle";
+          Anagram newAnagram = new Anagram(anagramWord, userWordList);
+          char[] anagramArray = newAnagram.GetArray(anagramWord);
           string[] userWordListArray = newAnagram.GetWordListArray(userWordList);
           char[][] charArrays = newAnagram.GetCharArrays(userWordListArray);
           char [][] sortedCharArrays = newAnagram.SortCharArrays(charArrays);

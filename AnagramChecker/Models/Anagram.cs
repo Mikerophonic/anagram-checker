@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System;
 
 namespace AnagramChecker.Models
@@ -6,17 +7,19 @@ namespace AnagramChecker.Models
     public class Anagram
     {
       public string AnagramWord { get; set; }
-      private string[] wordListArray;
+      // private string[] wordListArray;
+      public string UserWordList { get; set; }
 
-      public Anagram(string anagramWord)
+      public Anagram(string anagramWord, string userWordList)
       {
         AnagramWord = anagramWord;
+        UserWordList = userWordList;
       }
 
       public char[] GetArray(string anagramWord)
       {
-        char[] charArray = anagramWord.ToCharArray();
-        return charArray;
+        char[] baseWordCharArray = anagramWord.ToCharArray();
+        return baseWordCharArray;
       }
 
       public string[] GetWordListArray(string input)
@@ -46,9 +49,16 @@ namespace AnagramChecker.Models
         return charArrays;
       }
 
+      public List<bool> CompareToBaseWord(char[][] charArrays, char[] baseWordCharArray)
+      {
+          List<bool> comparisonResults = new List<bool>();
+          for (int i = 0; i < charArrays.Length; i++)
+          {
+            bool isSameAsBase = charArrays[i].SequenceEqual(baseWordCharArray);              comparisonResults.Add(isSameAsBase);
+          }
+          return comparisonResults;
+      }
 
-      
     }
-
 }
 
